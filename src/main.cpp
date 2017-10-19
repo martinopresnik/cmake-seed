@@ -1,10 +1,17 @@
 #include <iostream>
 
 #include "libstart.h"
+#include <QString>
+
+#include "mainwindow.h"
+#include <QApplication>
 
 using namespace std;
 
 int main(int argc, char* argv[]){
-	cout << "1 + 1 = " << sum(1, 1);
-	return 0;
+	QApplication a(argc, argv);
+	MainWindow w;
+	w.show();
+
+	return a.exec();
 }

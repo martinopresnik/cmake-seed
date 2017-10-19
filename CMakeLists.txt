@@ -50,16 +50,37 @@ target_include_directories(libstart
 # message(STATUS "OpenCV library dir found at ${OpenCV_LIB_DIR}")
 # set_target_properties(${OpenCV_LIBS} PROPERTIES MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE)
 
+
+# Qt 
+# Instruct CMake to run moc automatically when needed.
+# find_package(Qt5Core REQUIRED)
+# find_package(Qt5Widgets REQUIRED)
+
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+
+# Find the QtWidgets library
+find_package(Qt5Widgets)
+
 # Program -----------------------------
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS
+    ${CMAKE_CURRENT_SOURCE_DIR}/ui
+)
 
 set(vaja_SOURCES 
     src/main.cpp
+    src/mainwindow.cpp
     )
 
 add_executable("${CMAKE_PROJECT_NAME}" ${vaja_SOURCES})
 
 target_link_libraries("${CMAKE_PROJECT_NAME}"
     PRIVATE libstart
+    Qt5::Widgets
 #     PRIVATE ${OpenCV_LIBS}
     )
 
