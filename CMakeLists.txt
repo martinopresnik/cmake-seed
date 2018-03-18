@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1) 
 
-project(predmetOpresnikVajaX VERSION 0.1 LANGUAGES CXX)
+project(NnkrVaja1 VERSION 0.1 LANGUAGES CXX)
 
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -53,8 +53,8 @@ target_include_directories(libstart
 
 # Qt 
 # Instruct CMake to run moc automatically when needed.
-# find_package(Qt5Core REQUIRED)
-# find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
 
 
 set(CMAKE_AUTOMOC ON)
@@ -76,15 +76,15 @@ set(vaja_SOURCES
     src/mainwindow.cpp
     )
 
-add_executable("${CMAKE_PROJECT_NAME}" ${vaja_SOURCES})
+set(vaja_UI
+    ui/mainwindow.ui
+    )
+
+add_executable("${CMAKE_PROJECT_NAME}" ${vaja_SOURCES} ${vaja_UI})
 
 target_link_libraries("${CMAKE_PROJECT_NAME}"
     PRIVATE libstart
     Qt5::Widgets
-#     PRIVATE ${OpenCV_LIBS}
+    PRIVATE ${OpenCV_LIBS}
     )
 
-    
-enable_testing()
-add_subdirectory("${CMAKE_SOURCE_DIR}/tests")
- 
