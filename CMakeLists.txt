@@ -65,5 +65,5 @@ target_link_libraries("${CMAKE_PROJECT_NAME}"
 
     
 enable_testing()
-add_subdirectory("${CMAKE_SOURCE_DIR}/tests")
+#add_subdirectory("${CMAKE_SOURCE_DIR}/tests")
  
