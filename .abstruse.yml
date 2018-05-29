@@ -1,0 +1,12 @@
+image: abstruse
+
+matrix:
+  - env: COMMAND=test
+
+before_install:
+  - apt-get update
+install:
+  - apt-get install -y  build-essential cmake
+
+script:
+  - mkdir build && cd build && cmake .. && make
